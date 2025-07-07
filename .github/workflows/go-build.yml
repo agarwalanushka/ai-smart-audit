@@ -1,0 +1,32 @@
+name: Go Build Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Go
+      uses: actions/setup-go@v5
+      with:
+        go-version: '1.21' # or the version your project uses
+
+    - name: Verify dependencies
+      run: go mod tidy
+
+    - name: Build the application
+      run: go build ./...
+
+    - name: Run vet (optional but recommended)
+      run: go vet ./...
+
+    - name: Run tests (optional but recommended)
+      run: go test ./...
