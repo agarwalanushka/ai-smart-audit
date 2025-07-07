@@ -1,0 +1,3 @@
+AppConfig:
+  AppNmae: "ai-smart-audit"
+  AppServerAddress: 0.0.0.0:9000
